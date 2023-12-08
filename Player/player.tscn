@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://kkaaoj8gvi4e"]
+
+[ext_resource type="Script" path="res://Player/player.gd" id="1_v0jcm"]
+[ext_resource type="Texture2D" uid="uid://lvtaj2awf312" path="res://Player/crosshairs_red.png" id="2_0w7k2"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0gvf6"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_cjq1t"]
+radius = 10.0
+
+[node name="Player" type="CharacterBody3D"]
+motion_mode = 1
+script = ExtResource("1_v0jcm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_0gvf6")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+
+[node name="TargetArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TargetArea"]
+shape = SubResource("SphereShape3D_cjq1t")
+
+[node name="TargetCrosshair" type="Node3D" parent="."]
+top_level = true
+
+[node name="TextureRect" type="TextureRect" parent="TargetCrosshair"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(32, 32)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="TargetCrosshair/TextureRect"]
+texture_filter = 1
+scale = Vector2(10, 10)
+texture = ExtResource("2_0w7k2")
+offset = Vector2(0.5, 0.5)
+hframes = 16
+vframes = 16
+frame = 96
+
+[connection signal="body_entered" from="TargetArea" to="." method="_on_target_area_body_entered"]
+[connection signal="body_exited" from="TargetArea" to="." method="_on_target_area_body_exited"]

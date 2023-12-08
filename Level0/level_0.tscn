@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://k2gt186yjxf7"]
+
+[ext_resource type="PackedScene" uid="uid://c5rh7cy6oeb02" path="res://Enemy/enemy.tscn" id="1_cuw7f"]
+[ext_resource type="PackedScene" uid="uid://kkaaoj8gvi4e" path="res://Player/player.tscn" id="2_s46wl"]
+
+[sub_resource type="Environment" id="Environment_3s73u"]
+background_mode = 1
+background_color = Color(1, 1, 1, 1)
+background_energy_multiplier = 0.0
+ambient_light_source = 3
+ambient_light_color = Color(0.25098, 0.25098, 0.25098, 1)
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_a3hg5"]
+
+[node name="Level0" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, 0, 0, 0)
+sky_mode = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3s73u")
+camera_attributes = SubResource("CameraAttributesPractical_a3hg5")
+
+[node name="Enemy" parent="." instance=ExtResource("1_cuw7f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+
+[node name="Player" parent="." instance=ExtResource("2_s46wl")]
+sensitivity = 0.001

@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_v0jcm"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_0gvf6"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0t1u5"]
 
-[node name="Player" type="CharacterBody3D"]
-motion_mode = 1
+[node name="Player" type="CharacterBody3D" groups=["players"]]
 script = ExtResource("1_v0jcm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("SphereShape3D_0gvf6")
+shape = SubResource("CapsuleShape3D_0t1u5")
 
 [node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

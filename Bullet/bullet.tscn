@@ -16,6 +16,7 @@ size = Vector3(0.3, 0.3, 1)
 top_level = true
 motion_mode = 1
 script = ExtResource("1_uujb0")
+turn_speed = 10.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_kyfuk")

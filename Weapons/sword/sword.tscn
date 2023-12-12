@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://bv5c10cu7upv8"]
+[gd_scene load_steps=5 format=3 uid="uid://bv5c10cu7upv8"]
 
 [ext_resource type="Script" path="res://Weapons/sword/sword.gd" id="1_thbq4"]
-[ext_resource type="PackedScene" uid="uid://cvot2ka4u2l1m" path="res://Weapons/blend/Katana/Sword.glb" id="2_d0xq5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uy0bj"]
 height = 1.5
@@ -45,4 +44,4 @@ libraries = {
 "": SubResource("AnimationLibrary_4l8a4")
 }
 
-[node name="Sword" parent="." instance=ExtResource("2_d0xq5")]
+[node name="Sword" type="Node3D" parent="."]

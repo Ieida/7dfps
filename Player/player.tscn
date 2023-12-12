@@ -23,7 +23,7 @@ current = true
 
 [node name="ShurikenThrower" parent="Camera3D" instance=ExtResource("3_01sy5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
-arc_angle = 45.0
+arc_angle = 10.0
 
 [node name="KunaiThrower" parent="Camera3D" instance=ExtResource("4_vihtb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)

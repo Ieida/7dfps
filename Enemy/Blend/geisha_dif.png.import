@@ -2,18 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1bvu8sh10k1s"
-path.s3tc="res://.godot/imported/Shuriken_Shuriken_dif.png-b61cd3f81a6296dec2f64e0bf49f33cb.s3tc.ctex"
+uid="uid://cdjpwth8j38vb"
+path.s3tc="res://.godot/imported/geisha_dif.png-e6bb7e4517af2f6921a3b7213e181480.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
 
 [deps]
 
-source_file="res://weapons/blend/Shuriken/Shuriken_Shuriken_dif.png"
-dest_files=["res://.godot/imported/Shuriken_Shuriken_dif.png-b61cd3f81a6296dec2f64e0bf49f33cb.s3tc.ctex"]
+source_file="res://Enemy/Blend/geisha_dif.png"
+dest_files=["res://.godot/imported/geisha_dif.png-e6bb7e4517af2f6921a3b7213e181480.s3tc.ctex"]
 
 [params]
 

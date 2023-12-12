@@ -30,6 +30,7 @@ shader_parameter/use_borders = false
 shader_parameter/border_width = 0.01
 
 [node name="Enemy" type="CharacterBody3D" groups=["enemies"]]
+process_mode = 1
 script = ExtResource("1_wbvmm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

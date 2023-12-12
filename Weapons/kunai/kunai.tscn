@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cp2ktpdgnx5jx"]
+
+[ext_resource type="Script" path="res://Weapons/kunai/kunai.gd" id="1_6d0tw"]
+[ext_resource type="PackedScene" uid="uid://c0jhhhtumr3t4" path="res://Weapons/blend/kunai/Kunai.glb" id="1_y78n8"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d84r3"]
+radius = 0.03
+height = 0.2
+
+[node name="Kunai" type="CharacterBody3D"]
+motion_mode = 1
+script = ExtResource("1_6d0tw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.07)
+shape = SubResource("CapsuleShape3D_d84r3")
+
+[node name="Kunai" parent="." instance=ExtResource("1_y78n8")]
+transform = Transform3D(0.07, 0, 0, 0, 0.07, 0, 0, 0, 0.07, 0, 0, 0)

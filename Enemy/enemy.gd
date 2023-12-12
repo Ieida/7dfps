@@ -2,10 +2,10 @@ extends CharacterBody3D
 class_name Enemy
 
 
-var movement_speed: float = 0.5
+@export var movement_speed: float = 0.5
 var target: Node3D = null
-
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
+@export var health: float = 100
 
 
 func _ready():
@@ -35,7 +35,17 @@ func _physics_process(delta):
 
 	var current_agent_position: Vector3 = global_position
 	var next_path_position: Vector3 = navigation_agent.get_next_path_position()
-	print(next_path_position)
 
 	velocity = current_agent_position.direction_to(next_path_position) * movement_speed
 	move_and_slide()
+
+
+func take_damage(amount: float):
+	health -= amount
+	if health <= 0:
+		die()
+
+
+func die():
+	set_physics_process(false)
+	queue_free()

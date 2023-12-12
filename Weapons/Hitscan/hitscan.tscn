@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://07ltt0wju583"]
+
+[ext_resource type="Script" path="res://Weapons/Hitscan/hitscan.gd" id="1_5c23s"]
+
+[node name="Hitscan" type="Node3D"]
+script = ExtResource("1_5c23s")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+enabled = false
+target_position = Vector3(0, 0, -1)

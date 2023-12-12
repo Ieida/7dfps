@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2hnvpus7wcq8"]
+
+[ext_resource type="Script" path="res://Weapons/shuriken_thrower/shuriken_thrower.gd" id="1_gtrrv"]
+[ext_resource type="PackedScene" uid="uid://cm3cox5hee45e" path="res://Weapons/shuriken/shuriken.tscn" id="2_vesn0"]
+
+[node name="ShurikenThrower" type="Node3D"]
+script = ExtResource("1_gtrrv")
+shuriken = ExtResource("2_vesn0")

@@ -1,9 +1,21 @@
-[gd_scene load_steps=128 format=3 uid="uid://nvqdno0ncyci"]
+[gd_scene load_steps=131 format=3 uid="uid://nvqdno0ncyci"]
 
 [ext_resource type="Script" path="res://addons/cyclops_level_builder/nodes/cyclops_blocks.gd" id="1_nh6br"]
 [ext_resource type="Script" path="res://addons/cyclops_level_builder/nodes/cyclops_convex_block.gd" id="2_b1ep3"]
 [ext_resource type="Script" path="res://addons/cyclops_level_builder/resources/convex_block_data.gd" id="3_tvpob"]
 [ext_resource type="PackedScene" uid="uid://kkaaoj8gvi4e" path="res://Player/player.tscn" id="4_v7gff"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_va7b5"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_hlor0"]
+sky_material = SubResource("ProceduralSkyMaterial_va7b5")
+
+[sub_resource type="Environment" id="Environment_nevm1"]
+background_mode = 2
+sky = SubResource("Sky_hlor0")
+tonemap_mode = 2
 
 [sub_resource type="Resource" id="Resource_4dym5"]
 script = ExtResource("3_tvpob")
@@ -2445,7 +2457,7 @@ face_selected = PackedByteArray(1, 0, 0, 0, 0, 0)
 active_face = -1
 face_ids = PackedInt32Array(0, 1, 2, 3, 4, 5)
 
-[sub_resource type="Resource" id="Resource_n34un"]
+[sub_resource type="Resource" id="Resource_je3i8"]
 script = ExtResource("3_tvpob")
 selected = false
 active = false
@@ -2454,7 +2466,7 @@ vertex_points = PackedVector3Array(13, 10, -20, 16, 10, -17, 21, 10, -29, 16, 10
 vertex_selected = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0)
 active_vertex = -1
 edge_vertex_indices = PackedInt32Array(0, 1, 1, 2, 2, 3, 3, 0, 0, 4, 4, 5, 5, 1, 6, 2, 1, 6, 7, 3, 6, 7, 6, 5, 4, 7)
-edge_selected = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0)
+edge_selected = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 active_edge = -1
 edge_face_indices = PackedInt32Array(0, 1, 0, 2, 0, 3, 0, 6, 1, 6, 1, 4, 1, 5, 2, 3, 2, 5, 3, 6, 3, 4, 4, 5, 4, 6)
 face_vertex_count = PackedInt32Array(4, 4, 3, 4, 4, 3, 4)
@@ -2467,9 +2479,8 @@ face_ids = PackedInt32Array(0, 1, 2, 3, 4, 5, 6)
 
 [node name="Level 1" type="Node3D"]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-shadow_enabled = true
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_nevm1")
 
 [node name="Map" type="Node3D" parent="."]
 
@@ -2968,7 +2979,7 @@ block_data = SubResource("Resource_nvqsd")
 
 [node name="Block_122" type="Node" parent="Map/Cyclopse/CyclopsBlocks"]
 script = ExtResource("2_b1ep3")
-block_data = SubResource("Resource_n34un")
+block_data = SubResource("Resource_je3i8")
 
 [node name="Lights" type="Node3D" parent="Map"]
 
@@ -2977,6 +2988,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.81028, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Map/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.81028, 0)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Map/Lights"]
+transform = Transform3D(-0.809211, 0.0804957, 0.581978, 0.456516, 0.709682, 0.536604, -0.369825, 0.699908, -0.61103, 8.92951, 11.1653, -20.4045)
+shadow_enabled = true
+
+[node name="DirectionalLight3D3" type="DirectionalLight3D" parent="Map/Lights"]
+transform = Transform3D(-0.397549, 0.702271, -0.590568, 0.456516, 0.709682, 0.536604, 0.795957, -0.0562775, -0.602731, -9.39892, 11.1653, -20.4045)
+shadow_enabled = true
 
 [node name="Actors" type="Node3D" parent="."]
 

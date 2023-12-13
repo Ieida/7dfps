@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bupkslgc6bybw"
-path="res://.godot/imported/Shuriken.glb-f9e3c5c9671d43c75e4d3efd14e7bea0.scn"
+uid="uid://be35magh6t63m"
+path="res://.godot/imported/Flying enemy.glb-a8d1fb983c1262068ba3915bbd77dedb.scn"
 
 [deps]
 
-source_file="res://Weapons/blend/Shuriken/Shuriken.glb"
-dest_files=["res://.godot/imported/Shuriken.glb-f9e3c5c9671d43c75e4d3efd14e7bea0.scn"]
+source_file="res://Enemy/Blend/Flying/Flying enemy.glb"
+dest_files=["res://.godot/imported/Flying enemy.glb-a8d1fb983c1262068ba3915bbd77dedb.scn"]
 
 [params]
 

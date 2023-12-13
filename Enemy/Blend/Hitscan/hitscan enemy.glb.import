@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bupkslgc6bybw"
-path="res://.godot/imported/Shuriken.glb-f9e3c5c9671d43c75e4d3efd14e7bea0.scn"
+uid="uid://ddjw1nepguo7r"
+path="res://.godot/imported/hitscan enemy.glb-e1abb9fcf11f5b062c93e128edb6ead7.scn"
 
 [deps]
 
-source_file="res://Weapons/blend/Shuriken/Shuriken.glb"
-dest_files=["res://.godot/imported/Shuriken.glb-f9e3c5c9671d43c75e4d3efd14e7bea0.scn"]
+source_file="res://Enemy/Blend/Hitscan/hitscan enemy.glb"
+dest_files=["res://.godot/imported/hitscan enemy.glb-e1abb9fcf11f5b062c93e128edb6ead7.scn"]
 
 [params]
 

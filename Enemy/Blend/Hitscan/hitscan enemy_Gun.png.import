@@ -2,17 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hy73q512wrqv"
-path.s3tc="res://.godot/imported/Katana_dif.png-7f84300a23adb12d614964416d6a6a7f.s3tc.ctex"
+uid="uid://bj2b0mxyvh8ni"
+path.s3tc="res://.godot/imported/hitscan enemy_Gun.png-ac09b0d6fdf235cdfd66acfead9a5bc2.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={}
 
 [deps]
 
-source_file="res://Weapons/blend/Katana/Katana_dif.png"
-dest_files=["res://.godot/imported/Katana_dif.png-7f84300a23adb12d614964416d6a6a7f.s3tc.ctex"]
+source_file="res://Enemy/Blend/Hitscan/hitscan enemy_Gun.png"
+dest_files=["res://.godot/imported/hitscan enemy_Gun.png-ac09b0d6fdf235cdfd66acfead9a5bc2.s3tc.ctex"]
 
 [params]
 

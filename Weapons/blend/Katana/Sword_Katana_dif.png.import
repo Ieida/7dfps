@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dlm41411v8voi"
-path.s3tc="res://.godot/imported/Sword_Katana_dif.png-1cafb616d9c4ecc454c0603dad9ac445.s3tc.ctex"
+path.s3tc="res://.godot/imported/Sword_Katana_dif.png-c7b9a102991e397093e06b414935caab.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://weapons/blend/Katana/Sword_Katana_dif.png"
-dest_files=["res://.godot/imported/Sword_Katana_dif.png-1cafb616d9c4ecc454c0603dad9ac445.s3tc.ctex"]
+source_file="res://Weapons/blend/Katana/Sword_Katana_dif.png"
+dest_files=["res://.godot/imported/Sword_Katana_dif.png-c7b9a102991e397093e06b414935caab.s3tc.ctex"]
 
 [params]
 

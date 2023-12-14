@@ -2,6 +2,7 @@ extends CharacterController
 
 
 @onready var camera = $Camera3D
+@export var health: float = 100
 @export var sensitivity: float = 2
 var rot_x = 0.0
 var rot_y = 0.0
@@ -57,7 +58,9 @@ func switch_weapon(new_weapon: String):
 
 
 func take_damage(amount: float):
-	print("%s took %s damage" % [self, amount])
+	health -= amount
+	if health <= 0:
+		get_tree().reload_current_scene()
 
 
 func use_weapon():

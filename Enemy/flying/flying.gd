@@ -37,20 +37,15 @@ func _physics_process(delta):
 	elif state == State.ATTACK and not can_see_target():
 		state = State.CHASE
 		animation_player.clear_queue()
-		await attack_end()
 		chase()
 
 
 func attack():
-	is_navigating = false
-	is_facing_target = true
-	while state == State.ATTACK:
-		shoot()
-		await get_tree().create_timer(shoot_time).timeout
-
-
-func attack_end():
+	is_navigating = true
 	is_facing_target = false
+	while state == State.ATTACK:
+		set_movement_target(target.position)
+		await get_tree().create_timer(0.5).timeout
 
 
 func chase():
@@ -64,7 +59,8 @@ func chase():
 func face_position(pos: Vector3):
 	pos.y = $Armature.global_position.y
 	pos = $Armature.global_position + -$Armature.global_position.direction_to(pos)
-	$Armature.look_at(pos)
+	if pos.distance_to($Armature.global_position) > 0.1:
+		$Armature.look_at(pos)
 
 
 func idle():
@@ -84,5 +80,11 @@ func set_target(new_target: Node3D):
 	raycast.add_exception(target as CollisionObject3D)
 
 
-func shoot():
-	deal_damage()
+func explode():
+	for body in $ExplosionArea.get_overlapping_bodies():
+		deal_damage(body)
+	queue_free()
+
+
+func _on_navigation_agent_3d_target_reached():
+	explode()

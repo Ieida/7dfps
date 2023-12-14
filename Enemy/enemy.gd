@@ -6,7 +6,7 @@ class_name Enemy
 signal agent_ready
 
 
-@export var movement_speed: float = 0.5
+@export var movement_speed: float = 2
 var target: Node3D = null
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
 var is_navigating = false
@@ -64,8 +64,11 @@ func take_damage(amount: float):
 		die()
 
 
-func deal_damage(amount: float = damage):
-	target.take_damage(amount)
+func deal_damage(victim = target, amount: float = damage):
+	if victim is Hitbox:
+		victim.take_damage(amount)
+	elif victim.has_method("take_damage"):
+		victim.take_damage(amount)
 
 
 func die():

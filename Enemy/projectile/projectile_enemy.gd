@@ -73,7 +73,8 @@ func chase():
 func face_position(pos: Vector3):
 	pos.y = $Armature.global_position.y
 	pos = $Armature.global_position + -$Armature.global_position.direction_to(pos)
-	$Armature.look_at(pos)
+	if pos.distance_to($Armature.global_position) > 0.1:
+		$Armature.look_at(pos)
 
 
 func idle():
@@ -96,7 +97,7 @@ func set_target(new_target: Node3D):
 
 func shoot():
 	var new_projectile = projectile.instantiate()
-	get_tree().root.add_child(new_projectile)
+	get_tree().current_scene.add_child(new_projectile)
 	if new_projectile is Projectile:
 		new_projectile.global_transform = $Armature/Skeleton3D/Geisha/ShootPoint.global_transform
 		new_projectile.add_collision_exception_with($Hitbox)

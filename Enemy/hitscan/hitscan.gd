@@ -62,7 +62,8 @@ func chase():
 func face_position(pos: Vector3):
 	pos.y = $metarig.global_position.y
 	pos = $metarig.global_position + -$metarig.global_position.direction_to(pos)
-	$metarig.look_at(pos)
+	if pos.distance_to($metarig.global_position) > 0.1:
+		$metarig.look_at(pos)
 
 
 func idle():

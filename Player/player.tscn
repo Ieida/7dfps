@@ -15,7 +15,6 @@
 [node name="Player" type="CharacterBody3D" groups=["players"]]
 collision_layer = 4
 script = ExtResource("1_v0jcm")
-sensitivity = null
 speed = 5.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

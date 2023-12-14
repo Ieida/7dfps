@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dl8ox7l8qpqvn"]
+[gd_scene load_steps=13 format=3 uid="uid://dl8ox7l8qpqvn"]
 
 [ext_resource type="Texture2D" uid="uid://d3ct5o7tg3b0g" path="res://Enemy/Blend/Flying/Flying enemy_Flying_dif.png" id="1_2c67k"]
 [ext_resource type="Script" path="res://Enemy/flying/flying.gd" id="1_iif1j"]
@@ -112,9 +112,14 @@ _data = {
 "Rotors": SubResource("Animation_aq7bh")
 }
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_0x03h"]
+radius = 2.0
+
 [node name="Flying" type="CharacterBody3D"]
 collision_layer = 4
 script = ExtResource("1_iif1j")
+movement_speed = 6.0
+damage = 50.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_beldi")
@@ -141,28 +146,28 @@ bones/1/parent = 0
 bones/1/rest = Transform3D(0.738217, -0.00337195, 0.674555, 0.00845464, 0.999955, -0.004254, -0.674511, 0.00884349, 0.738212, 1.38771, 0.195983, 1.07334)
 bones/1/enabled = true
 bones/1/position = Vector3(1.38771, 0.195983, 1.07334)
-bones/1/rotation = Quaternion(0.00351232, 0.361776, 0.0031715, 0.932253)
+bones/1/rotation = Quaternion(0.00323091, 0.281468, 0.00345776, 0.959559)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/name = "Front_Rotor_R"
 bones/2/parent = 0
 bones/2/rest = Transform3D(0.738217, 0.00337195, -0.674555, -0.00845464, 0.999955, -0.004254, 0.674511, 0.00884349, 0.738212, -1.38771, 0.195983, 1.07334)
 bones/2/enabled = true
 bones/2/position = Vector3(-1.38771, 0.195983, 1.07334)
-bones/2/rotation = Quaternion(0.00351232, -0.361776, -0.0031715, 0.932253)
+bones/2/rotation = Quaternion(0.00376847, -0.43948, -0.00286244, 0.89824)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "Back_Rotor_L"
 bones/3/parent = 0
 bones/3/rest = Transform3D(0.838058, -0.00368382, 0.545569, -0.00171002, 0.999955, 0.00937875, -0.545579, -0.00879287, 0.838014, 1.08765, 0.196054, -0.657018)
 bones/3/enabled = true
 bones/3/position = Vector3(1.08765, 0.196054, -0.657018)
-bones/3/rotation = Quaternion(-0.00473887, 0.284554, 0.000514735, 0.958648)
+bones/3/rotation = Quaternion(-0.00476544, 0.202287, 0.000111277, 0.979315)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "Back_Rotor_R"
 bones/4/parent = 0
 bones/4/rest = Transform3D(0.838058, 0.00368382, -0.545569, 0.00171002, 0.999955, 0.00937875, 0.545579, -0.00879287, 0.838014, -1.08765, 0.196054, -0.657018)
 bones/4/enabled = true
 bones/4/position = Vector3(-1.08765, 0.196054, -0.657018)
-bones/4/rotation = Quaternion(-0.00473887, -0.284554, -0.000514735, 0.958648)
+bones/4/rotation = Quaternion(-0.0046782, -0.364773, -0.000914489, 0.931084)
 bones/4/scale = Vector3(1, 1, 1)
 
 [node name="Cube" type="MeshInstance3D" parent="Armature/Skeleton3D"]
@@ -181,5 +186,13 @@ autoplay = "Rotors"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 enabled = false
 
+[node name="ExplosionArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ExplosionArea"]
+shape = SubResource("SphereShape3D_0x03h")
+
 [connection signal="agent_ready" from="." to="." method="_on_agent_ready"]
 [connection signal="hit" from="Hitbox" to="." method="take_damage"]
+[connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_target_reached"]

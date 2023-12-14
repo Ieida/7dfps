@@ -74,7 +74,7 @@ func holster(weapon: Weapon):
 
 var is_switching_weapon = false
 func switch_weapon(new_weapon: String):
-	if is_switching_weapon: return
+	if is_switching_weapon or is_using_weapon: return
 	is_switching_weapon = true
 	
 	await active_weapon.holster()
@@ -92,6 +92,8 @@ func take_damage(amount: float):
 		get_tree().reload_current_scene()
 
 
+var is_using_weapon = false
 func use_weapon():
 	if is_switching_weapon: return
+	is_using_weapon = true
 	active_weapon.use()

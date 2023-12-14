@@ -31,10 +31,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 current = true
 
 [node name="Katana" parent="Camera3D" instance=ExtResource("4_mf3hw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 
 [node name="KunaiThrower" parent="Camera3D" instance=ExtResource("6_21wwx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 
 [node name="ShurikenThrower" parent="Camera3D" instance=ExtResource("5_tacxk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 arc_angle = 45.0
 
 [connection signal="hit" from="Hitbox" to="." method="take_damage"]

@@ -43,3 +43,5 @@ arc_angle = 10.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 
 [node name="WeaponSwitcher" parent="." instance=ExtResource("3_18wna")]
+
+[connection signal="hit" from="Hitbox" to="." method="take_damage"]

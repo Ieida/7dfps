@@ -39,7 +39,8 @@ func _physics_process(delta):
 		state = State.CHASE
 		animation_player.clear_queue()
 		await attack_end()
-		chase()
+		if state == State.CHASE:
+			chase()
 
 
 func attack():

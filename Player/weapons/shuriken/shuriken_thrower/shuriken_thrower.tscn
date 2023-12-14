@@ -1,17 +1,138 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2hnvpus7wcq8"]
+[gd_scene load_steps=9 format=3 uid="uid://d2hnvpus7wcq8"]
 
 [ext_resource type="Script" path="res://Player/weapons/shuriken/shuriken_thrower/shuriken_thrower.gd" id="1_1a14w"]
 [ext_resource type="PackedScene" uid="uid://cm3cox5hee45e" path="res://Player/weapons/shuriken/shuriken.tscn" id="2_ycl5c"]
+[ext_resource type="PackedScene" uid="uid://bupkslgc6bybw" path="res://Weapons/blend/Shuriken/Shuriken.glb" id="3_yqcso"]
 
 [sub_resource type="Animation" id="Animation_ald0o"]
 resource_name = "unholster"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shuriken:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.120694, 0), Vector3(0.016, 0.005, -0.149), Vector3(-0.069, -0.06, -0.229)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shuriken:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 1.06797), Vector3(0.853466, -1.46084, -1.38056), Vector3(0, -0.0436332, -0.0523599)]
+}
 
 [sub_resource type="Animation" id="Animation_y6q56"]
 resource_name = "holster"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shuriken:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.069, -0.06, -0.229), Vector3(0, -0.120694, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shuriken:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -0.0436332, -0.0523598), Vector3(0, 0, 1.06797)]
+}
+
+[sub_resource type="Animation" id="Animation_d5ger"]
+resource_name = "throw"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shuriken:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.069, -0.06, -0.229), Vector3(0.054026, -0.06, -0.320507)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shuriken:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -0.0436332, -0.0523598), Vector3(-3.61396e-09, -0.488343, -0.0523598)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"throw"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_0luxw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shuriken:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.120694, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shuriken:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 1.06797)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oq00b"]
 _data = {
+"RESET": SubResource("Animation_0luxw"),
 "holster": SubResource("Animation_y6q56"),
+"throw": SubResource("Animation_d5ger"),
 "unholster": SubResource("Animation_ald0o")
 }
 
@@ -24,3 +145,16 @@ animation_player = NodePath("AnimationPlayer")
 libraries = {
 "": SubResource("AnimationLibrary_oq00b")
 }
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+visible = false
+
+[node name="Shuriken" parent="." instance=ExtResource("3_yqcso")]
+transform = Transform3D(0.0481907, -0.0876223, 0, 0.0876222, 0.0481907, 0, 0, 0, 0.1, 0, -0.120694, 0)
+
+[node name="Shuriken2" parent="Shuriken" instance=ExtResource("3_yqcso")]
+transform = Transform3D(0.55118, 0, -0.834386, 0, 1, 0, 0.834386, 0, 0.55118, -0.615239, 0.0924641, 0.199946)
+
+[node name="Shuriken3" parent="Shuriken/Shuriken2" instance=ExtResource("3_yqcso")]
+transform = Transform3D(0.972276, 0, 0.233836, 0, 1, 0, -0.233836, 0, 0.972276, 0.186212, 0.112372, 0.561035)

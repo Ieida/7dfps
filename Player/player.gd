@@ -19,17 +19,14 @@ func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 	# Setup weapons
-	active_weapon = katana
 	katana.add_damage_exception($Hitbox)
 	kunai.add_damage_exception($Hitbox)
 	kunai.holster()
-	kunai.hide()
 	shuriken.add_damage_exception($Hitbox)
 	shuriken.holster()
-	shuriken.hide()
 	
 	# Unholster the starting weapon
-	switch_weapon("sword")
+	switch_weapon("katana")
 
 
 func _input(event):
@@ -52,8 +49,8 @@ func _process(delta):
 	set_input_direction(direction)
 	
 	# switching weapons
-	if Input.is_action_just_pressed("sword"):
-		switch_weapon("sword")
+	if Input.is_action_just_pressed("katana"):
+		switch_weapon("katana")
 	elif Input.is_action_just_pressed("shuriken"):
 		switch_weapon("shuriken")
 	elif Input.is_action_just_pressed("kunai"):
@@ -77,7 +74,8 @@ func switch_weapon(new_weapon: String):
 	if is_switching_weapon or is_using_weapon: return
 	is_switching_weapon = true
 	
-	await active_weapon.holster()
+	print("switching weapon to %s" % new_weapon)
+	if active_weapon: await active_weapon.holster()
 	active_weapon = katana
 	if new_weapon == "kunai": active_weapon = kunai
 	elif new_weapon == "shuriken": active_weapon = shuriken
@@ -94,6 +92,7 @@ func take_damage(amount: float):
 
 var is_using_weapon = false
 func use_weapon():
-	if is_switching_weapon: return
+	if not active_weapon or is_switching_weapon: return
 	is_using_weapon = true
-	active_weapon.use()
+	await active_weapon.use()
+	is_using_weapon = false

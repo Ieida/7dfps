@@ -7,7 +7,10 @@ extends Weapon
 
 
 func use():
-	throw()
+	animation_player.play("throw")
+	await animation_player.animation_finished
+	animation_player.play("unholster")
+	await animation_player.animation_finished
 
 
 func throw():

@@ -20,9 +20,8 @@ func swing():
 	if is_swinging: return
 	is_swinging = true
 	
-	print("%s swinging %s" % [owner, self])
 	# play animation
-	animation_player.play("example_swing")
+	animation_player.play("swing")
 	# await animation finish
 	await animation_player.animation_finished
 	

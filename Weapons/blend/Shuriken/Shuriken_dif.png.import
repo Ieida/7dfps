@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://sk1bdt6huwvc"
-path.s3tc="res://.godot/imported/Shuriken_dif.png-c4f0ac9963eb0314199dab67c3b32e13.s3tc.ctex"
+path.s3tc="res://.godot/imported/Shuriken_dif.png-1e8eef47cfd9e23493221927567e70ec.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Weapons/blend/Shuriken/Shuriken_dif.png"
-dest_files=["res://.godot/imported/Shuriken_dif.png-c4f0ac9963eb0314199dab67c3b32e13.s3tc.ctex"]
+source_file="res://weapons/blend/Shuriken/Shuriken_dif.png"
+dest_files=["res://.godot/imported/Shuriken_dif.png-1e8eef47cfd9e23493221927567e70ec.s3tc.ctex"]
 
 [params]
 

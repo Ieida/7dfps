@@ -1,17 +1,139 @@
-[gd_scene load_steps=6 format=3 uid="uid://v70xhsudyblc"]
+[gd_scene load_steps=9 format=3 uid="uid://v70xhsudyblc"]
 
 [ext_resource type="Script" path="res://Player/weapons/kunai/kunai_thrower/kunai_thrower.gd" id="1_y4cg4"]
 [ext_resource type="PackedScene" uid="uid://cp2ktpdgnx5jx" path="res://Player/weapons/kunai/kunai.tscn" id="2_m1qmo"]
+[ext_resource type="PackedScene" uid="uid://c0jhhhtumr3t4" path="res://Weapons/blend/kunai/Kunai.glb" id="3_o7xj0"]
 
 [sub_resource type="Animation" id="Animation_4yhjm"]
 resource_name = "unholster"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Kunai:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -0.800118, 0), Vector3(0.142, -0.107, -0.172)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Kunai:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-1.5708, 0, 0), Vector3(2.10661, 1.28107, -0.298451)]
+}
 
 [sub_resource type="Animation" id="Animation_c5ydw"]
 resource_name = "holster"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Kunai:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.142, -0.107, -0.172), Vector3(0, -0.800118, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Kunai:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(2.10661, 1.28107, -0.298451), Vector3(-1.5708, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_71fxn"]
+resource_name = "throw"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Kunai:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.142, -0.107, -0.172), Vector3(0, -0.1, -0.2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Kunai:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(2.10661, 1.28107, -0.298451), Vector3(0, 0, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"throw"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_w4cag"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Kunai:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Kunai:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k51u8"]
 _data = {
+"RESET": SubResource("Animation_w4cag"),
 "holster": SubResource("Animation_c5ydw"),
+"throw": SubResource("Animation_71fxn"),
 "unholster": SubResource("Animation_4yhjm")
 }
 
@@ -24,3 +146,6 @@ animation_player = NodePath("AnimationPlayer")
 libraries = {
 "": SubResource("AnimationLibrary_k51u8")
 }
+
+[node name="Kunai" parent="." instance=ExtResource("3_o7xj0")]
+transform = Transform3D(0.07, 0, 0, 0, 0.07, 0, 0, 0, 0.07, 0, 0, 0)

@@ -1,5 +1,4 @@
 extends CharacterBody3D
-class_name Projectile
 
 
 signal collided(collision: KinematicCollision3D)

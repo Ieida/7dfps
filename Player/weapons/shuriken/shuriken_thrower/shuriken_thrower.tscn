@@ -152,9 +152,3 @@ visible = false
 
 [node name="Shuriken" parent="." instance=ExtResource("3_yqcso")]
 transform = Transform3D(0.0481907, -0.0876223, 0, 0.0876222, 0.0481907, 0, 0, 0, 0.1, 0, -0.120694, 0)
-
-[node name="Shuriken2" parent="Shuriken" instance=ExtResource("3_yqcso")]
-transform = Transform3D(0.55118, 0, -0.834386, 0, 1, 0, 0.834386, 0, 0.55118, -0.615239, 0.0924641, 0.199946)
-
-[node name="Shuriken3" parent="Shuriken/Shuriken2" instance=ExtResource("3_yqcso")]
-transform = Transform3D(0.972276, 0, 0.233836, 0, 1, 0, -0.233836, 0, 0.972276, 0.186212, 0.112372, 0.561035)

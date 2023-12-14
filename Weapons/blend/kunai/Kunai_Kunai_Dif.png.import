@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cs27h4b2rtdol"
-path.s3tc="res://.godot/imported/Kunai_Kunai_Dif.png-d1716ced1636b5da11abedd154bcefba.s3tc.ctex"
+path.s3tc="res://.godot/imported/Kunai_Kunai_Dif.png-c32d82dc0b7a2a6c83cfca4d5a3b2115.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://weapons/blend/kunai/Kunai_Kunai_Dif.png"
-dest_files=["res://.godot/imported/Kunai_Kunai_Dif.png-d1716ced1636b5da11abedd154bcefba.s3tc.ctex"]
+source_file="res://Weapons/blend/kunai/Kunai_Kunai_Dif.png"
+dest_files=["res://.godot/imported/Kunai_Kunai_Dif.png-c32d82dc0b7a2a6c83cfca4d5a3b2115.s3tc.ctex"]
 
 [params]
 

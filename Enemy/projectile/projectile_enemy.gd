@@ -98,6 +98,6 @@ func set_target(new_target: Node3D):
 func shoot():
 	var new_projectile = projectile.instantiate()
 	get_tree().current_scene.add_child(new_projectile)
-	if new_projectile is Projectile:
+	if new_projectile:
 		new_projectile.global_transform = $Armature/Skeleton3D/Geisha/ShootPoint.global_transform
 		new_projectile.add_collision_exception_with($Hitbox)

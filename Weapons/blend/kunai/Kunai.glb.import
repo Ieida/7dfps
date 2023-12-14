@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c0jhhhtumr3t4"
-path="res://.godot/imported/Kunai.glb-f717266db65f26cd748500ee67967419.scn"
+path="res://.godot/imported/Kunai.glb-98fa25dd6eff3b7225bed95e493c5d34.scn"
 
 [deps]
 
-source_file="res://weapons/blend/kunai/Kunai.glb"
-dest_files=["res://.godot/imported/Kunai.glb-f717266db65f26cd748500ee67967419.scn"]
+source_file="res://Weapons/blend/kunai/Kunai.glb"
+dest_files=["res://.godot/imported/Kunai.glb-98fa25dd6eff3b7225bed95e493c5d34.scn"]
 
 [params]
 

@@ -19,7 +19,7 @@ func throw():
 	new_kunai.transform = global_transform
 	
 	# set collision avoidance
-	for body in damage_avoidant_bodies:
+	for body in damage_exceptions:
 		new_kunai.add_collision_exception_with(body)
 	
 	# apply forces

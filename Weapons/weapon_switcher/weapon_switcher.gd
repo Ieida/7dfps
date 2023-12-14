@@ -22,6 +22,7 @@ func switch_to(name: String):
 	# Holster
 	if current_weapon:
 		await current_weapon.holster()
+		
 	# Unholster
 	await new_weapon.unholster()
 	current_weapon = new_weapon

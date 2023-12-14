@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://wvcd2bbx4g8a"]
+
+[ext_resource type="Script" path="res://Weapons/projectile/projectile.gd" id="1_d4upm"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_duea8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jwhja"]
+shading_mode = 0
+grow_amount = 0.39
+
+[sub_resource type="SphereMesh" id="SphereMesh_0hti6"]
+material = SubResource("StandardMaterial3D_jwhja")
+
+[node name="Orb" type="CharacterBody3D"]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_d4upm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_duea8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_0hti6")
+
+[connection signal="collided" from="." to="." method="_on_collided"]

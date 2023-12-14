@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://bt45pi0uhgt8a"]
+
+[node name="PatrolPoint" type="Node3D" groups=["patrol_points"]]

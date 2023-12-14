@@ -1,25 +1,39 @@
-[gd_scene load_steps=7 format=3 uid="uid://kkaaoj8gvi4e"]
+[gd_scene load_steps=10 format=3 uid="uid://kkaaoj8gvi4e"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_v0jcm"]
-[ext_resource type="PackedScene" uid="uid://bv5c10cu7upv8" path="res://weapons/sword/sword.tscn" id="2_pwm7l"]
-[ext_resource type="PackedScene" uid="uid://d2hnvpus7wcq8" path="res://weapons/shuriken_thrower/shuriken_thrower.tscn" id="3_01sy5"]
-[ext_resource type="PackedScene" uid="uid://dw54vugn002h0" path="res://weapons/weapon_switcher/weapon_switcher.tscn" id="3_18wna"]
-[ext_resource type="PackedScene" uid="uid://v70xhsudyblc" path="res://weapons/kunai_thrower/kunai_thrower.tscn" id="4_vihtb"]
+[ext_resource type="PackedScene" uid="uid://ccmrnq834odby" path="res://components/hitbox/hitbox.tscn" id="2_7yu4x"]
+[ext_resource type="PackedScene" uid="uid://hxcvr06jhrg5" path="res://Weapons/weapon_owner/weapon_owner.tscn" id="2_a536g"]
+[ext_resource type="PackedScene" uid="uid://bv5c10cu7upv8" path="res://Weapons/katana/katana.tscn" id="2_pwm7l"]
+[ext_resource type="PackedScene" uid="uid://d2hnvpus7wcq8" path="res://Weapons/shuriken_thrower/shuriken_thrower.tscn" id="3_01sy5"]
+[ext_resource type="PackedScene" uid="uid://dw54vugn002h0" path="res://Weapons/weapon_switcher/weapon_switcher.tscn" id="3_18wna"]
+[ext_resource type="PackedScene" uid="uid://v70xhsudyblc" path="res://Weapons/kunai_thrower/kunai_thrower.tscn" id="4_vihtb"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j55yt"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n305c"]
+
 [node name="Player" type="CharacterBody3D" groups=["players"]]
+collision_layer = 4
 script = ExtResource("1_v0jcm")
+sensitivity = null
 speed = 5.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_j55yt")
 
+[node name="Hitbox" parent="." instance=ExtResource("2_7yu4x")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+shape = SubResource("CapsuleShape3D_n305c")
+
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 current = true
 
-[node name="Sword" parent="Camera3D" instance=ExtResource("2_pwm7l")]
+[node name="WeaponOwner" parent="Camera3D" instance=ExtResource("2_a536g")]
+
+[node name="Sword" parent="Camera3D/WeaponOwner" instance=ExtResource("2_pwm7l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="ShurikenThrower" parent="Camera3D" instance=ExtResource("3_01sy5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)

@@ -5,20 +5,18 @@ extends CharacterController
 @export var sensitivity: float = 2
 var rot_x = 0.0
 var rot_y = 0.0
-@onready var weapon_switcher: WeaponSwitcher = $WeaponSwitcher
+@export var weapons: Array[WeaponOwner]
 var weapon: Weapon = null
 
+
+# set up the player
 func _ready():
 	# Capture mouse
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
 	# Add weapons to the weapon switcher
-	$Camera3D/Sword.avoid_damaging_body(self)
-	weapon_switcher.add_weapon("sword", $Camera3D/Sword)
-	$Camera3D/ShurikenThrower.avoid_damaging_body(self)
-	weapon_switcher.add_weapon("shuriken", $Camera3D/ShurikenThrower)
-	$Camera3D/KunaiThrower.avoid_damaging_body(self)
-	weapon_switcher.add_weapon("kunai", $Camera3D/KunaiThrower)
-	# Unholster weapon
+	
+	# Unholster the starting weapon
 	switch_weapon("sword")
 
 
@@ -51,19 +49,18 @@ func _process(delta):
 	
 	# shooting
 	if Input.is_action_just_pressed("shoot"):
-		shoot()
+		use_weapon()
 
 
 func switch_weapon(new_weapon: String):
 	weapon = null
-	weapon = await weapon_switcher.switch_to(new_weapon)
 
 
 func take_damage(amount: float):
 	print("%s took %s damage" % [self, amount])
 
 
-func shoot():
+func use_weapon():
 	if not weapon: return
 	
 	weapon.use()

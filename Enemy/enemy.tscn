@@ -36,7 +36,7 @@ script = ExtResource("1_wbvmm")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_0j7wj")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Model(replace with enemy model)" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_kgmot")
 surface_material_override/0 = SubResource("ShaderMaterial_pkfwu")
 

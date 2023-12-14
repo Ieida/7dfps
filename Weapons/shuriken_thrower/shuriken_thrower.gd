@@ -32,7 +32,7 @@ func throw():
 		new_shuriken.rotate_object_local(Vector3(0, -1, 0), deg_to_rad(180 + spawn_angle))
 		new_shuriken.translate_object_local(Vector3(0, 0, arc_radius))
 		# set collision avoidance
-		for body in damage_avoidant_bodies:
+		for body in damage_exceptions:
 			new_shuriken.add_collision_exception_with(body)
 		for shur in spawned_shurikens:
 			new_shuriken.add_collision_exception_with(shur)

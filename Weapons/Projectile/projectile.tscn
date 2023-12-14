@@ -1,6 +1,10 @@
 [gd_scene load_steps=2 format=3 uid="uid://db4b6dov0cq8f"]
 
-[ext_resource type="Script" path="res://Weapons/Projectile/projectile.gd" id="1_pg2vs"]
+[ext_resource type="Script" path="res://Weapons/projectile/projectile.gd" id="1_pg2vs"]
 
-[node name="Projectile" type="RigidBody3D"]
+[node name="Projectile" type="CharacterBody3D"]
+collision_layer = 8
+collision_mask = 2
 script = ExtResource("1_pg2vs")
+
+[connection signal="collided" from="." to="." method="_on_collided"]

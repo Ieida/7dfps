@@ -2,34 +2,45 @@ extends CharacterBody3D
 class_name Enemy
 
 
+## Emitted when the NavigationAgent is ready to query the NavigationServer
+signal agent_ready
+
+
 @export var movement_speed: float = 0.5
 var target: Node3D = null
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
+var is_navigating = false
 @export var health: float = 100
+@onready var raycast: RayCast3D = $RayCast3D
+@export var damage: float = 30
 
 
 func _ready():
-	target = get_tree().get_nodes_in_group("players")[0]
-
-	# Make sure to not await during _ready.
-	call_deferred("actor_setup")
-
-
-func actor_setup():
-	# Wait for the first physics frame so the NavigationServer can sync.
-	await get_tree().physics_frame
-
-	# Now that the navigation map is no longer empty, set the movement target.
-	while true:
-		set_movement_target(target.position)
-		await get_tree().create_timer(0.5).timeout
+	call_deferred("agent_setup")
 
 
 func set_movement_target(movement_target: Vector3):
 	navigation_agent.set_target_position(movement_target)
 
 
+func _process(delta):
+	pass
+
+
 func _physics_process(delta):
+	if is_navigating: move_towards()
+
+
+func agent_setup():
+	await get_tree().physics_frame
+	agent_ready.emit()
+
+
+func set_target(new_target: Node3D):
+	target = new_target
+
+
+func move_towards():
 	if navigation_agent.is_navigation_finished():
 		return
 
@@ -40,12 +51,22 @@ func _physics_process(delta):
 	move_and_slide()
 
 
+func can_see_target():
+	if not target: return false
+	raycast.target_position = target.global_position - global_position
+	raycast.force_raycast_update()
+	return not raycast.is_colliding()
+
+
 func take_damage(amount: float):
 	health -= amount
 	if health <= 0:
 		die()
 
 
+func deal_damage(amount: float = damage):
+	target.take_damage(amount)
+
+
 func die():
-	set_physics_process(false)
 	queue_free()

@@ -2,6 +2,7 @@ extends Node3D
 class_name Weapon
 
 
+@export var animation_player: AnimationPlayer
 @export var damage: float = 1
 var damage_exceptions: Array[Node]
 
@@ -20,6 +21,18 @@ func remove_damage_exception(body: Node):
 	if not damage_exceptions.has(body): return
 	
 	damage_exceptions.erase(body)
+
+
+func unholster():
+	show()
+	animation_player.play("unholster")
+	await animation_player.animation_finished
+
+
+func holster():
+	animation_player.play("holster")
+	await animation_player.animation_finished
+	hide()
 
 
 func use():

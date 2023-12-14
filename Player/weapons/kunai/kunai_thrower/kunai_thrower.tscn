@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://v70xhsudyblc"]
+
+[ext_resource type="Script" path="res://Player/weapons/kunai/kunai_thrower/kunai_thrower.gd" id="1_y4cg4"]
+[ext_resource type="PackedScene" uid="uid://cp2ktpdgnx5jx" path="res://Player/weapons/kunai/kunai.tscn" id="2_m1qmo"]
+
+[sub_resource type="Animation" id="Animation_4yhjm"]
+resource_name = "unholster"
+
+[sub_resource type="Animation" id="Animation_c5ydw"]
+resource_name = "holster"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k51u8"]
+_data = {
+"holster": SubResource("Animation_c5ydw"),
+"unholster": SubResource("Animation_4yhjm")
+}
+
+[node name="KunaiThrower" type="Node3D" node_paths=PackedStringArray("animation_player")]
+script = ExtResource("1_y4cg4")
+kunai = ExtResource("2_m1qmo")
+animation_player = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_k51u8")
+}

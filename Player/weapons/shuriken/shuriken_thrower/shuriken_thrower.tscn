@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://d2hnvpus7wcq8"]
+
+[ext_resource type="Script" path="res://Player/weapons/shuriken/shuriken_thrower/shuriken_thrower.gd" id="1_1a14w"]
+[ext_resource type="PackedScene" uid="uid://cm3cox5hee45e" path="res://Player/weapons/shuriken/shuriken.tscn" id="2_ycl5c"]
+
+[sub_resource type="Animation" id="Animation_ald0o"]
+resource_name = "unholster"
+
+[sub_resource type="Animation" id="Animation_y6q56"]
+resource_name = "holster"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oq00b"]
+_data = {
+"holster": SubResource("Animation_y6q56"),
+"unholster": SubResource("Animation_ald0o")
+}
+
+[node name="ShurikenThrower" type="Node3D" node_paths=PackedStringArray("animation_player")]
+script = ExtResource("1_1a14w")
+shuriken = ExtResource("2_ycl5c")
+animation_player = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_oq00b")
+}

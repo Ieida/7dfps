@@ -6,8 +6,11 @@ extends CharacterController
 @export var sensitivity: float = 2
 var rot_x = 0.0
 var rot_y = 0.0
-@export var weapons: Array[WeaponOwner]
-var weapon: Weapon = null
+@export_category("Weapons")
+@export var katana: Weapon
+@export var kunai: Weapon
+@export var shuriken: Weapon
+@export var active_weapon: Weapon
 
 
 # set up the player
@@ -15,7 +18,15 @@ func _ready():
 	# Capture mouse
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
-	# Add weapons to the weapon switcher
+	# Setup weapons
+	active_weapon = katana
+	katana.add_damage_exception($Hitbox)
+	kunai.add_damage_exception($Hitbox)
+	kunai.holster()
+	kunai.hide()
+	shuriken.add_damage_exception($Hitbox)
+	shuriken.holster()
+	shuriken.hide()
 	
 	# Unholster the starting weapon
 	switch_weapon("sword")
@@ -53,8 +64,26 @@ func _process(delta):
 		use_weapon()
 
 
+func unholster(weapon: Weapon):
+	pass
+
+
+func holster(weapon: Weapon):
+	pass
+
+
+var is_switching_weapon = false
 func switch_weapon(new_weapon: String):
-	weapon = null
+	if is_switching_weapon: return
+	is_switching_weapon = true
+	
+	await active_weapon.holster()
+	active_weapon = katana
+	if new_weapon == "kunai": active_weapon = kunai
+	elif new_weapon == "shuriken": active_weapon = shuriken
+	await active_weapon.unholster()
+	
+	is_switching_weapon = false
 
 
 func take_damage(amount: float):
@@ -64,6 +93,5 @@ func take_damage(amount: float):
 
 
 func use_weapon():
-	if not weapon: return
-	
-	weapon.use()
+	if is_switching_weapon: return
+	active_weapon.use()

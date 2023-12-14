@@ -30,7 +30,8 @@ func _on_collision(collider: Object):
 	global_transform = t
 
 
-func deal_damage(victim: Node, damage_amount: float = damage):
-	if not victim.has_method("take_damage"): return
-	
-	victim.take_damage(damage_amount)
+func deal_damage(victim, damage_amount: float = damage):
+	if victim is Hitbox:
+		victim.take_damage(damage_amount)
+	elif victim.has_method("take_damage"):
+		victim.take_damage(damage_amount)

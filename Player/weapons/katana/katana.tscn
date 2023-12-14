@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bv5c10cu7upv8"]
+[gd_scene load_steps=8 format=3 uid="uid://bv5c10cu7upv8"]
 
-[ext_resource type="Script" path="res://Weapons/katana/katana.gd" id="1_thbq4"]
-[ext_resource type="PackedScene" uid="uid://cvot2ka4u2l1m" path="res://Weapons/blend/Katana/Sword.glb" id="2_pg1yu"]
+[ext_resource type="Script" path="res://Player/weapons/katana/katana.gd" id="1_sowjs"]
+[ext_resource type="PackedScene" uid="uid://cvot2ka4u2l1m" path="res://Weapons/blend/Katana/Sword.glb" id="2_n4n76"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uy0bj"]
 height = 1.5
@@ -26,13 +26,22 @@ tracks/0/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_xe76g"]
+resource_name = "unholster"
+
+[sub_resource type="Animation" id="Animation_givx4"]
+resource_name = "holster"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4l8a4"]
 _data = {
-"example_swing": SubResource("Animation_xf0x3")
+"example_swing": SubResource("Animation_xf0x3"),
+"holster": SubResource("Animation_givx4"),
+"unholster": SubResource("Animation_xe76g")
 }
 
-[node name="Katana" type="Node3D"]
-script = ExtResource("1_thbq4")
+[node name="Katana" type="Node3D" node_paths=PackedStringArray("animation_player")]
+script = ExtResource("1_sowjs")
+animation_player = NodePath("AnimationPlayer")
 
 [node name="AttackArea" type="Area3D" parent="."]
 
@@ -45,5 +54,5 @@ libraries = {
 "": SubResource("AnimationLibrary_4l8a4")
 }
 
-[node name="Sword" parent="." instance=ExtResource("2_pg1yu")]
+[node name="Sword" parent="." instance=ExtResource("2_n4n76")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)

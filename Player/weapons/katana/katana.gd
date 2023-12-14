@@ -3,7 +3,6 @@ class_name Sword
 
 
 var is_swinging = false
-@onready var animation_player = $AnimationPlayer
 var is_slicing: bool = false
 @onready var attack_area = $AttackArea
 

@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://v70xhsudyblc"]
-
-[ext_resource type="Script" path="res://Weapons/kunai_thrower/kunai_thrower.gd" id="1_js233"]
-[ext_resource type="PackedScene" uid="uid://cp2ktpdgnx5jx" path="res://Weapons/kunai/kunai.tscn" id="2_ju2t1"]
-
-[node name="KunaiThrower" type="Node3D"]
-script = ExtResource("1_js233")
-kunai = ExtResource("2_ju2t1")

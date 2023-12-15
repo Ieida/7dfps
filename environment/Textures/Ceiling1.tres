@@ -3,4 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cvieii8xtf0sh" path="res://environment/Textures/tile098.png" id="1_qg6je"]
 
 [resource]
+diffuse_mode = 3
+specular_mode = 1
 albedo_texture = ExtResource("1_qg6je")
+uv1_triplanar = true

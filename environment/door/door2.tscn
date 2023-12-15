@@ -1,11 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://clb0y54jmeux"]
+[gd_scene load_steps=10 format=3 uid="uid://cxyilmdeq8vk5"]
 
-[ext_resource type="Script" path="res://environment/door/door.gd" id="1_g1p60"]
-[ext_resource type="Texture2D" uid="uid://3b71j2oaiwkc" path="res://environment/Textures/bigdoor3.png" id="2_rl7ft"]
+[ext_resource type="Script" path="res://environment/door/door2.gd" id="1_rcdjp"]
+[ext_resource type="Texture2D" uid="uid://3b71j2oaiwkc" path="res://environment/Textures/bigdoor3.png" id="2_bm46r"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pru54"]
-albedo_texture = ExtResource("2_rl7ft")
-uv1_scale = Vector3(2.97, 2.005, 2.97)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gfy12"]
+albedo_texture = ExtResource("2_bm46r")
+uv1_scale = Vector3(12, 2, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_n6oxq"]
 size = Vector3(4, 4, 1)
@@ -66,12 +66,13 @@ _data = {
 }
 
 [node name="Door" type="Node3D"]
-script = ExtResource("1_g1p60")
+script = ExtResource("1_rcdjp")
 
 [node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationObstacle3D"]
-material_override = SubResource("StandardMaterial3D_pru54")
+material_override = SubResource("StandardMaterial3D_gfy12")
 mesh = SubResource("BoxMesh_n6oxq")
 skeleton = NodePath("../..")
 

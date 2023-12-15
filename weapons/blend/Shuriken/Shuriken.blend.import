@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dlit8j8nb6ay1"
-path="res://.godot/imported/Shuriken.blend-3137e181508a499427e62731dc945225.scn"
+path="res://.godot/imported/Shuriken.blend-d07df4fe277715b7905006be8f2a7ddc.scn"
 
 [deps]
 
-source_file="res://weapons/blend/Shuriken/Shuriken.blend"
-dest_files=["res://.godot/imported/Shuriken.blend-3137e181508a499427e62731dc945225.scn"]
+source_file="res://Weapons/blend/Shuriken/Shuriken.blend"
+dest_files=["res://.godot/imported/Shuriken.blend-d07df4fe277715b7905006be8f2a7ddc.scn"]
 
 [params]
 

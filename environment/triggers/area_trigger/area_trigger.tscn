@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://beu3efsak1rbc"]
+
+[ext_resource type="Script" path="res://environment/triggers/area_trigger/area_trigger.gd" id="1_exvrb"]
+
+[node name="AreaTrigger" type="Area3D"]
+script = ExtResource("1_exvrb")

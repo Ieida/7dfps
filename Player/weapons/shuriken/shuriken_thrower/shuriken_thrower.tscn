@@ -4,9 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://cm3cox5hee45e" path="res://Player/weapons/shuriken/shuriken.tscn" id="2_ycl5c"]
 [ext_resource type="PackedScene" uid="uid://bupkslgc6bybw" path="res://Weapons/blend/Shuriken/Shuriken.glb" id="3_yqcso"]
 
-[sub_resource type="Animation" id="Animation_ald0o"]
-resource_name = "unholster"
-length = 0.2
+[sub_resource type="Animation" id="Animation_0luxw"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -14,10 +13,10 @@ tracks/0/path = NodePath("Shuriken:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, -0.120694, 0), Vector3(0.016, 0.005, -0.149), Vector3(-0.069, -0.06, -0.229)]
+"values": [Vector3(0, -0.120694, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -26,10 +25,10 @@ tracks/1/path = NodePath("Shuriken:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 1.06797), Vector3(0.853466, -1.46084, -1.38056), Vector3(0, -0.0436332, -0.0523599)]
+"values": [Vector3(0, 0, 1.06797)]
 }
 
 [sub_resource type="Animation" id="Animation_y6q56"]
@@ -101,8 +100,9 @@ tracks/2/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_0luxw"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_ald0o"]
+resource_name = "unholster"
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -110,10 +110,10 @@ tracks/0/path = NodePath("Shuriken:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0, -0.120694, 0)]
+"values": [Vector3(0, -0.120694, 0), Vector3(0.016, 0.005, -0.149), Vector3(-0.069, -0.06, -0.229)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -122,10 +122,10 @@ tracks/1/path = NodePath("Shuriken:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 1.06797)]
+"values": [Vector3(0, 0, 1.06797), Vector3(0.853466, -1.46084, -1.38056), Vector3(0, -0.0436332, -0.0523599)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oq00b"]
@@ -151,4 +151,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 visible = false
 
 [node name="Shuriken" parent="." instance=ExtResource("3_yqcso")]
-transform = Transform3D(0.0481907, -0.0876223, 0, 0.0876222, 0.0481907, 0, 0, 0, 0.1, 0, -0.120694, 0)
+transform = Transform3D(0.0481904, -0.0876224, 0, 0.0876224, 0.0481904, 0, 0, 0, 0.1, 0, -0.120694, 0)

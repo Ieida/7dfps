@@ -1,4 +1,5 @@
 extends CharacterController
+class_name Player
 
 
 @onready var camera = $Camera3D

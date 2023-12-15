@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=3 uid="uid://clb0y54jmeux"]
+
+[ext_resource type="Script" path="res://environment/door/door.gd" id="1_g1p60"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_n6oxq"]
+size = Vector3(4, 4, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_khxsr"]
+data = PackedVector3Array(-2, 2, 0.5, 2, 2, 0.5, -2, -2, 0.5, 2, 2, 0.5, 2, -2, 0.5, -2, -2, 0.5, 2, 2, -0.5, -2, 2, -0.5, 2, -2, -0.5, -2, 2, -0.5, -2, -2, -0.5, 2, -2, -0.5, 2, 2, 0.5, 2, 2, -0.5, 2, -2, 0.5, 2, 2, -0.5, 2, -2, -0.5, 2, -2, 0.5, -2, 2, -0.5, -2, 2, 0.5, -2, -2, -0.5, -2, 2, 0.5, -2, -2, 0.5, -2, -2, -0.5, 2, 2, 0.5, -2, 2, 0.5, 2, 2, -0.5, -2, 2, 0.5, -2, 2, -0.5, 2, 2, -0.5, -2, -2, 0.5, 2, -2, 0.5, -2, -2, -0.5, 2, -2, 0.5, 2, -2, -0.5, -2, -2, -0.5)
+
+[sub_resource type="Animation" id="Animation_118mr"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NavigationObstacle3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 4, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_hfmhq"]
+resource_name = "close"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NavigationObstacle3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 4, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kblsm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NavigationObstacle3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7p51y"]
+_data = {
+"RESET": SubResource("Animation_kblsm"),
+"close": SubResource("Animation_hfmhq"),
+"open": SubResource("Animation_118mr")
+}
+
+[node name="Door" type="Node3D"]
+script = ExtResource("1_g1p60")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationObstacle3D"]
+mesh = SubResource("BoxMesh_n6oxq")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationObstacle3D/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationObstacle3D/MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_khxsr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7p51y")
+}

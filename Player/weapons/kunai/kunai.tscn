@@ -7,10 +7,9 @@
 radius = 0.03
 height = 0.2
 
-[node name="Kunai" type="CharacterBody3D"]
+[node name="Kunai" type="StaticBody3D"]
 collision_layer = 8
 collision_mask = 3
-motion_mode = 1
 script = ExtResource("1_gd4iy")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

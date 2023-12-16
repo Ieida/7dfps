@@ -1,8 +1,9 @@
-extends CharacterBody3D
+extends StaticBody3D
 class_name Kunai
 
 
 @export var damage: float = 50
+var velocity: Vector3 = Vector3.ZERO
 
 
 func apply_impulse_force(force: Vector3):
@@ -17,17 +18,33 @@ func _physics_process(delta):
 
 func _on_collision(collider: Object):
 	if not (collider is Node): return
+	if collider.get_collision_layer_value(2):
+		add_collision_exception_with(collider)
+		deal_damage(collider)
+		return
 	
+	# deactivate
 	set_physics_process(false)
 	for e in get_collision_exceptions():
-		remove_collision_exception_with(e)
+		if e: remove_collision_exception_with(e)
 	add_collision_exception_with(collider)
 	velocity = Vector3.ZERO
+	
+	# do damage
 	deal_damage(collider)
+	
+	# reparent
 	var t = global_transform
 	get_parent().remove_child(self)
 	collider.add_child(self)
 	global_transform = t
+	
+	# turn into pickup
+	set_collision_layer_value(4, false)
+	set_collision_layer_value(6, true)
+	set_collision_mask_value(1, false)
+	set_collision_mask_value(2, false)
+	add_to_group("pickups")
 
 
 func deal_damage(victim, damage_amount: float = damage):

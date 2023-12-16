@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Enemy/projectile/orb/orb.gd" id="1_iafo8"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_duea8"]
+radius = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jwhja"]
 shading_mode = 0
@@ -11,6 +12,8 @@ grow_amount = 0.39
 [sub_resource type="SphereMesh" id="SphereMesh_0hti6"]
 material = SubResource("StandardMaterial3D_jwhja")
 flip_faces = true
+radius = 1.05
+height = 2.1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4tmgd"]
 shading_mode = 0
@@ -19,14 +22,15 @@ grow_amount = 0.39
 
 [sub_resource type="SphereMesh" id="SphereMesh_gaa84"]
 material = SubResource("StandardMaterial3D_4tmgd")
-radius = 0.4
-height = 0.8
+radius = 1.0
+height = 2.0
 
 [node name="Orb" type="CharacterBody3D"]
 collision_layer = 8
 collision_mask = 3
 script = ExtResource("1_iafo8")
 damage = 50.0
+speed = 20.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_duea8")

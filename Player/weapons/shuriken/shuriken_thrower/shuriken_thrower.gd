@@ -9,18 +9,43 @@ extends Weapon
 		shuriken_amount = value if value > 0 else 0
 @export var throw_force: float = 100
 @export var throw_torque: float = 50
+@export var ammo: int = 6
 
 
+func has_ammo() -> bool:
+	return ammo >= shuriken_amount
+
+
+func add_ammo(amount: int = 1):
+	var had_ammo := ammo >= shuriken_amount
+	ammo += amount
+	if not is_holstered and not is_being_used and not had_ammo and ammo >= shuriken_amount:
+		animation_player.play("unholster")
+		await animation_player.animation_finished
+		show()
+
+
+var is_being_used = false
 func use():
+	if ammo < shuriken_amount or is_being_used: return
+	is_being_used = true
+	
 	animation_player.play("throw")
 	await animation_player.animation_finished
+	
+	if ammo < shuriken_amount:
+		hide()
+		is_being_used = false
+		return
+	
 	animation_player.play("unholster")
 	await animation_player.animation_finished
+	
+	is_being_used = false
 
 
 func throw():
-	if shuriken_amount < 1: return
-	
+	ammo -= shuriken_amount
 	var offset_angle = arc_angle / clampf(shuriken_amount - 1, 1, shuriken_amount)
 	var starting_angle = offset_angle * (clampf(shuriken_amount - 1, 1, shuriken_amount) / 2)
 	var spawned_shurikens: Array[Shuriken] = []

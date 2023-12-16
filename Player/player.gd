@@ -2,7 +2,8 @@ extends CharacterController
 class_name Player
 
 
-@onready var camera = $Camera3D
+@onready var camera := $Camera3D
+@onready var ui := $UI
 @export var health: float = 100
 @export var sensitivity: float = 2
 var rot_x = 0.0
@@ -62,33 +63,57 @@ func _process(delta):
 		use_weapon()
 
 
-func unholster(weapon: Weapon):
-	pass
-
-
-func holster(weapon: Weapon):
-	pass
+func pickup(node: Node):
+	if node is Kunai:
+		kunai.add_ammo()
+		node.queue_free()
+	elif node is Shuriken:
+		shuriken.add_ammo()
+		node.queue_free()
 
 
 var is_switching_weapon = false
-func switch_weapon(new_weapon: String):
+func switch_weapon(weapon_name: String):
 	if is_switching_weapon or is_using_weapon: return
+	var new_weapon := katana
+	if weapon_name == "kunai":
+		new_weapon = kunai
+		if not new_weapon.has_ammo(): return
+	elif weapon_name == "shuriken":
+		new_weapon = shuriken
+		if not new_weapon.has_ammo(): return
+	if new_weapon == active_weapon: return
 	is_switching_weapon = true
 	
-	print("switching weapon to %s" % new_weapon)
 	if active_weapon: await active_weapon.holster()
-	active_weapon = katana
-	if new_weapon == "kunai": active_weapon = kunai
-	elif new_weapon == "shuriken": active_weapon = shuriken
+	active_weapon = new_weapon
 	await active_weapon.unholster()
 	
 	is_switching_weapon = false
 
 
 func take_damage(amount: float):
+	if is_dead: return
+	
 	health -= amount
 	if health <= 0:
-		get_tree().reload_current_scene()
+		_on_death()
+
+
+var is_dead := false
+func _on_death():
+	if is_dead: return
+	is_dead = true
+	
+	set_collision_layer_value(3, false)
+	set_collision_mask_value(1, false)
+	set_process_input(false)
+	set_physics_process(false)
+	ui.show()
+	var t = get_tree().create_tween()
+	t.tween_property(ui, "modulate", Color.WHITE, 1)
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	await t.finished
 
 
 var is_using_weapon = false
@@ -97,3 +122,12 @@ func use_weapon():
 	is_using_weapon = true
 	await active_weapon.use()
 	is_using_weapon = false
+
+
+func _on_restart_pressed():
+	get_tree().reload_current_scene()
+
+
+func _on_pickup_area_body_entered(body):
+	if body.is_in_group("pickups"):
+		pickup(body)

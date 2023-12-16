@@ -26,7 +26,13 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
 
-	move_and_slide()
+	if move_and_slide():
+		for collision_index in get_slide_collision_count():
+			_on_slide_collision(get_slide_collision(collision_index))
+
+
+func _on_slide_collision(collision: KinematicCollision3D):
+	pass
 
 
 func set_input_direction(new_input_direction: Vector3):

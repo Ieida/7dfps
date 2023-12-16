@@ -98,6 +98,8 @@ shuriken={
 3d_physics/layer_2="Hitboxes"
 3d_physics/layer_3="Controllers"
 3d_physics/layer_4="Projectiles"
+3d_physics/layer_5="Inactive"
+3d_physics/layer_6="pickups"
 
 [rendering]
 

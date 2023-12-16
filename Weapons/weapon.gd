@@ -23,13 +23,16 @@ func remove_damage_exception(body: Node):
 	damage_exceptions.erase(body)
 
 
+var is_holstered = false
 func unholster():
+	is_holstered = false
 	show()
 	animation_player.play("unholster")
 	await animation_player.animation_finished
 
 
 func holster():
+	is_holstered = true
 	animation_player.play("holster")
 	await animation_player.animation_finished
 	hide()

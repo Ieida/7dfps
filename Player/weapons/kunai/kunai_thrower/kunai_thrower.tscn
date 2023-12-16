@@ -4,9 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://cp2ktpdgnx5jx" path="res://Player/weapons/kunai/kunai.tscn" id="2_m1qmo"]
 [ext_resource type="PackedScene" uid="uid://c0jhhhtumr3t4" path="res://Weapons/blend/kunai/Kunai.glb" id="3_o7xj0"]
 
-[sub_resource type="Animation" id="Animation_4yhjm"]
-resource_name = "unholster"
-length = 0.3
+[sub_resource type="Animation" id="Animation_w4cag"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -14,10 +13,10 @@ tracks/0/path = NodePath("Kunai:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, -0.800118, 0), Vector3(0.142, -0.107, -0.172)]
+"values": [Vector3(0, 0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -26,15 +25,15 @@ tracks/1/path = NodePath("Kunai:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-1.5708, 0, 0), Vector3(2.10661, 1.28107, -0.298451)]
+"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_c5ydw"]
 resource_name = "holster"
-length = 0.3
+length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -42,10 +41,10 @@ tracks/0/path = NodePath("Kunai:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
+"times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0.142, -0.107, -0.172), Vector3(0, -0.800118, 0)]
+"values": [Vector3(0.142, -0.007, -0.172), Vector3(0, -0.800118, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -54,7 +53,7 @@ tracks/1/path = NodePath("Kunai:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
+"times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(2.10661, 1.28107, -0.298451), Vector3(-1.5708, 0, 0)]
@@ -73,7 +72,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0.142, -0.107, -0.172), Vector3(0, -0.1, -0.2)]
+"values": [Vector3(0.142, -0.007, 0.133), Vector3(0, -0.1, -0.3)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -102,8 +101,9 @@ tracks/2/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_w4cag"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_4yhjm"]
+resource_name = "unholster"
+length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -111,10 +111,10 @@ tracks/0/path = NodePath("Kunai:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(0, -0.800118, 0), Vector3(0.142, -0.007, -0.172)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -123,10 +123,10 @@ tracks/1/path = NodePath("Kunai:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(-1.5708, 0, 0), Vector3(2.10661, 1.28107, -0.298451)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k51u8"]
